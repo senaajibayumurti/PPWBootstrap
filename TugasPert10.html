@@ -8,12 +8,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
         @font-face {
-            font-family: 'ClashDisplay';
+            font-family:'ClashDisplay-Bold';
             src: url('font/ClashDisplay-Bold.otf');
         }
 
         body{
-            font-family: 'chinese rocks rg', sans-serif;
+            font-family: 'ClashDisplay-Bold';
             background-image: url('BGLaut.png');
             background-size: cover;
             background-position: center;
@@ -67,6 +67,18 @@
         }
         .container.section2{
             margin-top: 100px;
+        }
+        #textService1{
+            max-height: 120px;
+            overflow: auto;
+        }
+        #textService2{
+            max-height: 120px;
+            overflow: auto;
+        }
+        #textService3{
+            max-height: 120px;
+            overflow: auto;
         }
 
 
@@ -165,6 +177,10 @@
         footer a:hover {
             color: #999;
             text-decoration: none;
+        }
+
+        #AfterThxTextFalse{
+            color: red;
         }
 
 
@@ -477,7 +493,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <form>
+                        <form onsubmit="submitForm(event)">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" placeholder="Name">
                             </div>
@@ -487,9 +503,39 @@
                             <div class="form-group">
                                 <textarea class="form-control" id="message" rows="5" placeholder="Write your message here..."></textarea>
                             </div>
-                            <button type="submit" class="btn-send btn btn-primary" id="send-btn" onclick="myFunction()">SEND</button>
+                            <button type="submit" class=" btn btn-primary" id="send-btn">SEND</button>
+                            <div id="messageContainer" class="message-container" style="display: none;">
+                                <h3 id="ThxText"></h3>
+                                <p id="AfterThxText"></p>
+                                <p id="AfterThxTextFalse"></p>
+                            </div>
                         </form>
+                        
                     </div>
+                    <script>
+                        function submitForm(event) {
+                            event.preventDefault();
+
+                            var nameInput = document.getElementById("name");
+                            var emailInput = document.getElementById("email");
+                            var messageContainer = document.getElementById("messageContainer");
+                            var ThxText = document.getElementById("ThxText")
+                            var AfterThxText = document.getElementById("AfterThxText")
+                            var AfterThxTextFalse = document.getElementById("AfterThxTextFalse")
+
+                            var name = nameInput.value.trim();
+                            var email = emailInput.value.trim();
+
+                            if (name === "" || email === "") {
+                                ThxText.innerText = "";
+                                AfterThxTextFalse.innerText = "Name and Email can not be empty!";
+                            } else {
+                                ThxText.innerText = "Thank you for joining us!";
+                                AfterThxText.innerText = "We've sent an email to you for confirmation.";
+                            }
+                            messageContainer.style.display = "block";
+                        }
+                    </script>
                 </div>
             </div>
         </div>
