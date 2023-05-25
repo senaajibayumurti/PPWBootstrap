@@ -131,6 +131,15 @@
             border: none;
         }
 
+        .section-6 {
+            height: auto;
+        }
+        .section-6 td, th{
+            color: white;
+        }
+        #totalYearly{
+            font-size:xx-large;
+        }
 
         #get-in-touch {
             padding: 100px 0;
@@ -479,9 +488,133 @@
     </div>
     </div>
 </section>
-
 <!------------------------------------------SECTION 6------------------------------------------>
-<section class="section-6" id="get-in-touch">
+<section class="section-6">
+    <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="car-title text-center">ITEMS YOU CONSUME DAILY</h1>
+                    <h5 class="card-title text-center">Please enter the quantity for each day</h5>
+                    <div class="container">
+                        <table class="table">
+                            <thead>
+                                <th>Waste</th>
+                                <th>Daily</th>
+                                <th>Yearly</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Plastic Bottles</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily0" placeholder="Enter the daily amount" oninput="hitungYearly('0')">
+                                    </td>
+                                    <td id="yearly0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Plastic Cups</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily1" placeholder="Enter the daily amount" oninput="hitungYearly('1')">
+                                    </td>
+                                    <td id="yearly1"></td>
+                                </tr>
+                                <tr>
+                                    <td>Straws</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily2" placeholder="Enter the daily amount" oninput="hitungYearly('2')">
+                                    </td>
+                                    <td id="yearly2"></td>
+                                </tr>
+                                <tr>
+                                    <td>Cotton Swabs</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily3" placeholder="Enter the daily amount" oninput="hitungYearly('3')">
+                                    </td>
+                                    <td id="yearly3"></td>
+                                </tr>
+                                <tr>
+                                    <td>Cigarette Butts</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily4" placeholder="Enter the daily amount" oninput="hitungYearly('4')">
+                                    </td>
+                                    <td id="yearly4"></td>
+                                </tr>
+                                <tr>
+                                    <td>Plastic Resealable Bags</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily5" placeholder="Enter the daily amount" oninput="hitungYearly('5')">
+                                    </td>
+                                    <td id="yearly5"></td>
+                                </tr>
+                                <tr>
+                                    <td>Plastic Cling Wrap</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily6" placeholder="Enter the daily amount" oninput="hitungYearly('6')">
+                                    </td>
+                                    <td id="yearly6"></td>
+                                </tr>
+                                <tr>
+                                    <td>Plastic Silverware</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily7" placeholder="Enter the daily amount" oninput="hitungYearly('7')">
+                                    </td>
+                                    <td id="yearly7"></td>
+                                </tr>
+                                <tr>
+                                    <td>Plastic Sirrers</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily8" placeholder="Enter the daily amount" oninput="hitungYearly('8')">
+                                    </td>
+                                    <td id="yearly8"></td>
+                                </tr>
+                                <tr>
+                                    <td>Food Containers</td>
+                                    <td>
+                                    <input type="number" class="form-control" id="daily9" placeholder="Enter the daily amount" oninput="hitungYearly('9')">
+                                    </td>
+                                    <td id="yearly9"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h2>Current Yearly Consumption</h2>
+                                    </td>
+                                    <td id="totalYearly"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                
+                    <script>
+                    function hitungYearly(baris) {
+                        var daily = document.getElementById("daily" + baris).value;
+                        var yearly = daily * 365;
+                        document.getElementById("yearly" + baris).textContent = yearly;
+                        hitungTotalYearly();
+                    }
+
+                    function hitungTotalYearly() {
+                        var total = 0;
+                        for (var i = 0; i < 10; i++) {
+                            var yearly = parseInt(document.getElementById("yearly" + i).textContent);
+                            if (!isNaN(yearly)) {
+                                total += yearly;
+                            }
+                        }
+                        document.getElementById("totalYearly").textContent = total;
+                    }
+
+                    </script>
+                </div>
+            </div>
+    </div>
+</section>
+<!------------------------------------------SECTION 7------------------------------------------>
+<section class="section-7" id="get-in-touch">
     <div class="container">
         <div class="container">
             <h2 class="text-uppercase text-center mb-4">GET IN TOUCH:</h2>
